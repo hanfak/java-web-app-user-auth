@@ -1,6 +1,6 @@
-CREATE DATABASE fonixusers;
+CREATE DATABASE fonix_users;
 
-USE fonixusers;
+USE fonix_users;
 
 CREATE TABLE IF NOT EXISTS clients (
   id int(3) NOT NULL AUTO_INCREMENT,
