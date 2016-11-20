@@ -7,6 +7,19 @@
 <title>Registration</title>
 </head>
 <body>
-	Welcome to registration
+	<h1>Welcome to registration</h1>
+	
+	<form name="registration" action="RegServlet" method="post">
+		Username <input type="text" name="username"/>
+		
+		Email <input type="text" name="email"/>
+		
+		Mobile <input type="text" name="mobile"/>
+		
+		Password <input type="password" name="password"/>
+		
+		
+		<button type="submit">Submit</button>
+	</form>
 </body>
 </html>
