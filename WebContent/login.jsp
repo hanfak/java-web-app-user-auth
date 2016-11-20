@@ -9,6 +9,12 @@
 <body>
 	Welcome to login page
 	
+	<form name="login" action="login" method="post">
+		Email <input type="text" name="email"/></br>
+		Password <input type="password" name="password"/></br>
+		<button type="submit">Submit</button>
+	</form>
+	
 	<div>
 		<a href="${pageContext.request.contextPath}/register">Not yet registered</a>
 	</div>
