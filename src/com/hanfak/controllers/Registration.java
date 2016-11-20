@@ -1,12 +1,15 @@
 package com.hanfak.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hanfak.databases.RegistrationDatabaseManager;
 import com.hanfak.models.User;
 
 @WebServlet("/register")
@@ -32,6 +35,14 @@ public class Registration extends HttpServlet {
 		storeParamsInUser(username, email, mobile, password);
 		
 		System.out.println(newUser.getPassword());
+		
+		try {
+			RegistrationDatabaseManager.Insert(newUser);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		response.sendRedirect(request.getContextPath() + "/login");
 	}
