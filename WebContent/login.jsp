@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registration</title>
+<title>Login</title>
 </head>
 <body>
-	Welcome to registration
+	Welcome to login page
+	
+	<div>
+		<a href="${pageContext.request.contextPath}/register">Not yet registered</a>
+	</div>
 </body>
 </html>
