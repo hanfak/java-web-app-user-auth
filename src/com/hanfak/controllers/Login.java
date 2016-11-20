@@ -36,8 +36,13 @@ public class Login extends HttpServlet {
 		boolean checkUser = false;
 		try {
 			checkUser = LoginDatabaseManager.checkUser(userLoggingIn);
-			System.out.println(checkUser);
-			response.sendRedirect("welcome.jsp");
+			if(checkUser){
+//				System.out.println(checkUser);
+				response.sendRedirect("welcome.jsp");
+			} else {
+				response.sendRedirect("login.jsp");
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
