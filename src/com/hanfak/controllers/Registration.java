@@ -37,14 +37,20 @@ public class Registration extends HttpServlet {
 		System.out.println(newUser.getPassword());
 		
 		try {
-			RegistrationDatabaseManager.Insert(newUser);
-		} catch (ClassNotFoundException e) {
+			String page = "";
+			if (newUser.getUsername() != "" && newUser.getEmail() != "" && newUser.getMobile() != "" && newUser.getPassword() != ""){
+				System.out.println("runs insert");
+				System.out.println(newUser.getPassword());
+				RegistrationDatabaseManager.Insert(newUser);
+				page = "/login";
+			} else {
+				page = "/register";
+			}
+			response.sendRedirect(request.getContextPath() + page);	
+		} catch (ClassNotFoundException | SQLException e) {
+			response.sendRedirect(request.getContextPath() + "/register");
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		response.sendRedirect(request.getContextPath() + "/login");
+		} 
 	}
 	
 	private void storeParamsInUser(String username, String email, String mobile, String password){

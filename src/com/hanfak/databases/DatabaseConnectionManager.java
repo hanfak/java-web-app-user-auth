@@ -9,7 +9,7 @@ public class DatabaseConnectionManager {
 	private Connection connection = null;
 
 	private final String CONN_STRING 	= "jdbc:mysql://localhost/";
-	private final String DBNAME 		= "moreusers";
+	private final String DBNAME 		= "fonix_users";
 	private final String USERNAME		= "root";
 	private final String PASSWORD 		= "password";
 
