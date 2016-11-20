@@ -32,7 +32,6 @@ public class Registration extends HttpServlet {
 		String mobile 	= request.getParameter("mobile");
 		String password = request.getParameter("password");
 		
-//		newUser = new User();
 		storeParamsInUser(username, email, mobile, password);
 		
 		insertNewUserInDB(request, response, newUser );
@@ -48,7 +47,7 @@ public class Registration extends HttpServlet {
 	private void insertNewUserInDB(HttpServletRequest request, HttpServletResponse response, User newUser) throws IOException{
 		String page = "";
 		try {
-			if (allFieldsFilledIn()){
+			if (newUser.allFieldsFilledIn()){
 				RegistrationDatabaseManager.Insert(newUser);
 				page = "/login";
 			} else {
@@ -59,9 +58,5 @@ public class Registration extends HttpServlet {
 			e.printStackTrace();
 		} 
 		response.sendRedirect(request.getContextPath() + page);	
-	}
-	
-	private boolean allFieldsFilledIn(){
-		return newUser.getUsername() != "" && newUser.getEmail() != "" && newUser.getMobile() != "" && newUser.getPassword() != "";
 	}
 }

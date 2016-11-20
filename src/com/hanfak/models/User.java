@@ -44,4 +44,8 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", mobile=" + mobile + ", password="
 				+ password + "]";
 	}
+	
+	public boolean allFieldsFilledIn() {
+		return getUsername() != "" && getEmail() != "" && getMobile() != "" && getPassword() != "";
+	}
 }
