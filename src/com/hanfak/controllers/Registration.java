@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hanfak.models.User;
+
 /**
  * Servlet implementation class Registration
  */
@@ -33,8 +35,20 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		String email 	= request.getParameter("email");
+		String mobile 	= request.getParameter("mobile");
+		String password = request.getParameter("password");
+		
+		User newUser = new User();
+		newUser.setUsername(username);
+		newUser.setEmail(email);
+		newUser.setPassword(password);
+		newUser.setMobile(mobile);
+		
+		System.out.println(newUser.getPassword());
+
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 }
