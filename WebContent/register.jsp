@@ -9,7 +9,7 @@
 <body>
 	<h1>Welcome to registration</h1>
 	
-	<form name="registration" action="RegServlet" method="post">
+	<form name="registration" action="register" method="post">
 		Username <input type="text" name="username"/>
 		
 		Email <input type="text" name="email"/>
