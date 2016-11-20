@@ -12,17 +12,16 @@ public class LoginDatabaseManager {
 	public static boolean checkUser(User userLoggingIn) throws SQLException {
 		Connection connection = DatabaseConnectionManager.getInstance().getConnection();
 		
-		String queryUserExists ="SELECT COUNT(1) FROM clients WHERE email=? AND password=?";
+		String queryUserExists ="SELECT * FROM clients WHERE email=? AND password=?";
 		PreparedStatement pstmt	=	connection.prepareStatement(queryUserExists);
 		pstmt.setString(1, userLoggingIn.getEmail());
 		pstmt.setString(2, userLoggingIn.getPassword());
 		ResultSet rs	=	pstmt.executeQuery();
 		
-		rs.next();
-		int res = rs.getInt(1);
-//		System.out.println(rs.getInt(1));
+		boolean res = rs.first();
+		
 		rs.close();
 		DatabaseConnectionManager.getInstance().close();
-		return res==1;
+		return res;
 	}
 }
