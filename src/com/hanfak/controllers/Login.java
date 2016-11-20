@@ -1,40 +1,48 @@
 package com.hanfak.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Login
- */
+import com.hanfak.databases.LoginDatabaseManager;
+import com.hanfak.models.User;
+
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
+	private User userLoggingIn;
+
+	public Login() {
         super();
-        // TODO Auto-generated constructor stub
+        userLoggingIn = new User();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("login.jsp");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email	=	request.getParameter("email");
+		String password	=	request.getParameter("password");
+		
+//		User userLoggingIn = new User();
+		userLoggingIn.setEmail(email);
+		userLoggingIn.setPassword(password);
+		boolean checkUser = false;
+		try {
+			checkUser = LoginDatabaseManager.checkUser(userLoggingIn);
+			System.out.println(checkUser);
+			response.sendRedirect("welcome.jsp");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+
 	}
 
 }

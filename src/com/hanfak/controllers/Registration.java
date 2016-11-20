@@ -47,7 +47,7 @@ public class Registration extends HttpServlet {
 	private void insertNewUserInDB(HttpServletRequest request, HttpServletResponse response, User newUser) throws IOException{
 		String page = "";
 		try {
-			if (newUser.allFieldsFilledIn()){
+			if (newUser.allFieldsNotNull()){
 				RegistrationDatabaseManager.Insert(newUser);
 				page = "/login";
 			} else {

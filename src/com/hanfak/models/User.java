@@ -45,7 +45,7 @@ public class User {
 				+ password + "]";
 	}
 	
-	public boolean allFieldsFilledIn() {
+	public boolean allFieldsNotNull() {
 		return getUsername() != "" && getEmail() != "" && getMobile() != "" && getPassword() != "";
 	}
 }
