@@ -30,14 +30,12 @@ public class Login extends HttpServlet {
 		String email	=	request.getParameter("email");
 		String password	=	request.getParameter("password");
 		
-//		User userLoggingIn = new User();
 		userLoggingIn.setEmail(email);
 		userLoggingIn.setPassword(password);
 		boolean checkUser = false;
 		try {
 			checkUser = LoginDatabaseManager.checkUser(userLoggingIn);
 			if(checkUser){
-//				System.out.println(checkUser);
 				response.sendRedirect("welcome.jsp");
 			} else {
 				response.sendRedirect("login.jsp");
