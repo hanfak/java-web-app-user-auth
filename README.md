@@ -4,7 +4,7 @@ To  create a web application that allows a user to register their credentials an
 
 ## User Stories
 
-US1. Get personalised welcome page
+US1. Get welcome page
   As a user
   So I know what to do when accessing the site
   I want to be presented with choice of registering or logging in
@@ -22,13 +22,13 @@ US3. Login a User
 US4. Two factor authentication
   As a user
   so that I know my details are secure
-  I want to use a text authentication to access the my personalised application
+  I want to use a text authentication to access the my application
   
  (US is short for User Story)
 
 ## Technology
 
-- Java language using Eclipse J2EE
+- Java language using Eclipse J2EE IDE
 - MySQL database
 - Tomcat server 
 - MySQL connector (to connect database to program)
@@ -54,19 +54,20 @@ I have completed the first three user stories:
 ## To do
 
 - User story 4
-	- Add redirect from login POST controller to mobile authentication controller
+	- Add redirect from login POST controller to mobile authentication page
 	- Create controller to for mobile authentication for GET form to input code and POST to check if code matches and redirect to welcome page
 	- Create class to handle code creation, to create randomised code
 	- Implement Zensend to send text containing code
-- Check passwords match up on registration form
-- Secure passwords in database, use a hashing technique like brcypt to securely store the passwords
-- Use sessions to keep track of user and not able to login again
+	- Create method to get user details from database (database manager class) to personalise welcome page after 2FA has been done.
+- Check password and password confirmation match up on registration form, create new field for password confirmation in register.jsp
+- Secure passwords in database, use a hashing technique like brcypt to securely store the hashed passwords, and able to decrypt when need to use
+- Use sessions to keep track of user and not able to login again, allow for logout
 - Use dependency injection in servlets/controllers for instantiating the model object and thus lower coupling
 - Adding tests and redoing program using TDD
 
 ## Issues and difficulties
 
-Using servlets was a new technology for implement a web app, this took some time to understand and know how to go about completing the task. I had several issues including:
+Using servlets was a new technology for implementing a web app, this took some time to understand and know how to go about completing the task. I had several issues including:
 	- Use the wrong version of eclipse, which meant I could not see as  Tomcat an option
 	- Tomcat not linking to my servlets, solved by adding the correct library to build path
 	- sql not connecting, solved by storing jar file in project
